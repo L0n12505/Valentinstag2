@@ -2,170 +2,176 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Leonora 💖</title>
+<title>Leonora</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-html, body {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(120deg, #ff5f9e, #ffc371, #ff5f9e);
-  background-size: 400% 400%;
-  animation: gradientMove 18s ease infinite;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(120deg, #0f0f14, #1a1a24, #0f0f14);
+  background-size: 300% 300%;
+  animation: bgMove 20s ease infinite;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f5f5f7;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
 }
 
-@keyframes gradientMove {
+@keyframes bgMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Floating hearts */
-.heart {
-  position: absolute;
-  bottom: -10%;
-  font-size: 1.5rem;
-  animation: floatUp linear infinite;
-  opacity: 0.7;
-}
-
-@keyframes floatUp {
-  from { transform: translateY(0); opacity: 0; }
-  to { transform: translateY(-120vh); opacity: 1; }
-}
-
 .card {
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
-  padding: 45px 35px;
+  max-width: 420px;
   width: 90%;
-  max-width: 400px;
+  padding: 50px 40px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(25px);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.5);
   text-align: center;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
-  animation: popIn 1.4s ease;
-  z-index: 10;
 }
 
-@keyframes popIn {
-  from { transform: scale(0.85); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+.line {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: appear 1.2s ease forwards;
 }
 
-.main-heart {
-  font-size: 4rem;
-  animation: beat 1.4s infinite;
+.line:nth-child(1) { animation-delay: 0.6s; }
+.line:nth-child(2) { animation-delay: 1.8s; }
+.line:nth-child(3) { animation-delay: 3s; }
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes beat {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.25); }
-  100% { transform: scale(1); }
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 18px 0;
 }
 
 button {
-  width: 100%;
-  padding: 16px;
+  margin-top: 40px;
+  padding: 16px 34px;
+  font-size: 1.05rem;
   border-radius: 40px;
   border: none;
-  font-size: 1.1rem;
-  margin-top: 14px;
   cursor: pointer;
-}
-
-.yes {
-  background: linear-gradient(135deg,#ff4d6d,#ff85a1);
+  background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
   color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.no {
-  background: rgba(255,255,255,0.85);
-  color: #333;
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(255,77,109,0.35);
 }
 
-.explosion {
+.fadeout {
+  animation: fadeOut 1.2s ease forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
+
+.final {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle, #ff85a1, #ff4d6d);
+  background: linear-gradient(120deg, #14141c, #1e1e2b);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: explode 1.2s ease forwards;
+  text-align: center;
+  color: white;
+  animation: finalIn 1.5s ease forwards;
 }
 
-@keyframes explode {
-  0% { transform: scale(0); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+@keyframes finalIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.final h1 {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+}
+
+.final p {
+  font-size: 1.25rem;
+  opacity: 0.9;
 }
 </style>
 </head>
 
 <body>
 
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/11/04/audio_97b3d3f7e0.mp3" type="audio/mpeg">
+<audio id="music">
+  <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_0d6e6c6f47.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card" id="card">
-  <div class="main-heart">💖</div>
-  <h1>Leonora</h1>
-  <p>
-    Ich wollte dich nicht einfach fragen…  
-    <br><br>
-    Ich wollte es besonders machen ✨  
-    <br><br>
-    Hast du Lust,  
-    den <strong>Valentinstag</strong>  
-    mit mir zu verbringen? 💕
+  <h1 class="line">Leonora</h1>
+
+  <p class="line">
+    Ich wollte dich nicht einfach<br>
+    zwischen zwei Nachrichten fragen.
   </p>
 
-  <button class="yes" onclick="yes()">Ja 💘</button>
-  <button class="no" onclick="no()">Ich überleg 🙈</button>
+  <p class="line">
+    Deshalb nur das,<br>
+    ehrlich und ohne Schnickschnack.
+  </p>
+
+  <p class="line">
+    Möchtest du den<br>
+    <strong>Valentinstag</strong><br>
+    mit mir verbringen?
+  </p>
+
+  <button onclick="yes()">Ja</button>
 </div>
 
 <script>
-const heartEmojis = ["💗","💖","💕","💘"];
-
-function createHeart() {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerText = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
-  h.style.left = Math.random()*100 + "vw";
-  h.style.animationDuration = (6 + Math.random()*6) + "s";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 12000);
-}
-setInterval(createHeart, 600);
-
 function yes() {
   document.getElementById("music").play();
 
-  const boom = document.createElement("div");
-  boom.className = "explosion";
-  boom.innerHTML = `
-    <div style="text-align:center;">
-      <div style="font-size:4rem;">💘💘💘</div>
-      <h1>YES 😍</h1>
-      <p style="font-size:1.3rem;">
-        Dann gehört der Valentinstag uns ✨  
-        <br>Ich freu mich unglaublich auf dich 💖
-      </p>
-    </div>
-  `;
-  document.body.appendChild(boom);
-}
+  const card = document.getElementById("card");
+  card.classList.add("fadeout");
 
-function no() {
-  alert("Das war keine echte Option 😌💗");
+  setTimeout(() => {
+    const final = document.createElement("div");
+    final.className = "final";
+    final.innerHTML = `
+      <div>
+        <h1>Dann ist es ein Date.</h1>
+        <p>
+          Ich freu mich auf dich.<br>
+          Wirklich.
+        </p>
+      </div>
+    `;
+    document.body.appendChild(final);
+  }, 1200);
 }
 </script>
 
