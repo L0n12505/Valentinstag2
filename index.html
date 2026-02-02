@@ -1,150 +1,172 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Leonora 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Leonora 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      color: #fff;
-    }
+body {
+  background: linear-gradient(120deg, #ff5f9e, #ffc371, #ff5f9e);
+  background-size: 400% 400%;
+  animation: gradientMove 18s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
 
-    .container {
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(18px);
-      border-radius: 30px;
-      padding: 45px 35px;
-      width: 90%;
-      max-width: 380px;
-      text-align: center;
-      box-shadow: 0 30px 70px rgba(0,0,0,0.25);
-      animation: floatIn 1.4s ease;
-    }
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    h1 {
-      font-size: 2.3rem;
-      margin-bottom: 12px;
-    }
+/* Floating hearts */
+.heart {
+  position: absolute;
+  bottom: -10%;
+  font-size: 1.5rem;
+  animation: floatUp linear infinite;
+  opacity: 0.7;
+}
 
-    p {
-      font-size: 1.15rem;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 0; }
+  to { transform: translateY(-120vh); opacity: 1; }
+}
 
-    .heart {
-      font-size: 3.5rem;
-      animation: heartbeat 1.6s infinite;
-      margin-bottom: 15px;
-    }
+.card {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 45px 35px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+  animation: popIn 1.4s ease;
+  z-index: 10;
+}
 
-    button {
-      width: 100%;
-      padding: 16px;
-      border-radius: 35px;
-      border: none;
-      font-size: 1.1rem;
-      margin-top: 14px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    .yes {
-      background: linear-gradient(135deg, #ff4d6d, #ff758f);
-      color: white;
-    }
+.main-heart {
+  font-size: 4rem;
+  animation: beat 1.4s infinite;
+}
 
-    .yes:active {
-      transform: scale(0.96);
-    }
+@keyframes beat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
 
-    .no {
-      background: rgba(255,255,255,0.8);
-      color: #333;
-    }
+button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 40px;
+  border: none;
+  font-size: 1.1rem;
+  margin-top: 14px;
+  cursor: pointer;
+}
 
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
+.yes {
+  background: linear-gradient(135deg,#ff4d6d,#ff85a1);
+  color: white;
+}
 
-    @keyframes floatIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+.no {
+  background: rgba(255,255,255,0.85);
+  color: #333;
+}
+
+.explosion {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #ff85a1, #ff4d6d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: explode 1.2s ease forwards;
+}
+
+@keyframes explode {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+</style>
 </head>
 
 <body>
 
 <audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/10/03/audio_6c5f2c6e52.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/11/04/audio_97b3d3f7e0.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container" id="card">
-  <div class="heart">💗</div>
+<div class="card" id="card">
+  <div class="main-heart">💖</div>
   <h1>Leonora</h1>
   <p>
-    Ich hab lange überlegt,  
-    wie ich dich fragen soll…  
+    Ich wollte dich nicht einfach fragen…  
     <br><br>
-    Also mach ich’s einfach ehrlich 💕  
+    Ich wollte es besonders machen ✨  
     <br><br>
     Hast du Lust,  
     den <strong>Valentinstag</strong>  
-    mit mir zu verbringen?
+    mit mir zu verbringen? 💕
   </p>
 
-  <button class="yes" onclick="yes()">Ja, sehr 💖</button>
+  <button class="yes" onclick="yes()">Ja 💘</button>
   <button class="no" onclick="no()">Ich überleg 🙈</button>
 </div>
 
 <script>
-  function yes() {
-    document.getElementById("music").play();
+const heartEmojis = ["💗","💖","💕","💘"];
 
-    document.body.innerHTML = `
-      <div style="
-        height:100vh;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-        background:radial-gradient(circle at top,#ff758f,#ffb3c6);
-        color:white;
-        font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-        text-align:center;
-        padding:30px;
-      ">
-        <div style="font-size:4rem;">💘💘💘</div>
-        <h1 style="font-size:2.6rem;">Ich freu mich so!</h1>
-        <p style="font-size:1.3rem;">
-          Dann gehört der Valentinstag uns 🥰  
-          <br><br>
-          Ich kann’s kaum erwarten 💖
-        </p>
-        <div style="font-size:2.8rem;">🌹✨🍓</div>
-      </div>
-    `;
-  }
+function createHeart() {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+  h.style.left = Math.random()*100 + "vw";
+  h.style.animationDuration = (6 + Math.random()*6) + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 12000);
+}
+setInterval(createHeart, 600);
 
-  function no() {
-    alert("Ich frag dich später nochmal… aber mit noch mehr Charme 😌💗");
-  }
+function yes() {
+  document.getElementById("music").play();
+
+  const boom = document.createElement("div");
+  boom.className = "explosion";
+  boom.innerHTML = `
+    <div style="text-align:center;">
+      <div style="font-size:4rem;">💘💘💘</div>
+      <h1>YES 😍</h1>
+      <p style="font-size:1.3rem;">
+        Dann gehört der Valentinstag uns ✨  
+        <br>Ich freu mich unglaublich auf dich 💖
+      </p>
+    </div>
+  `;
+  document.body.appendChild(boom);
+}
+
+function no() {
+  alert("Das war keine echte Option 😌💗");
+}
 </script>
 
 </body>
